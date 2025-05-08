@@ -33,6 +33,9 @@
             <tr>
             <td>{{$nivel->id}}</td>
             <td>{{$nivel->nome}}</td>
+            <td class="text-end">
+                <a href="{{ route('niveis.show', $nivel->id) }}" class="btn btn-primary">Ver</a>
+            </td>
             </tr>
         @endforeach
     </tbody>
