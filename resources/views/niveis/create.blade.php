@@ -27,7 +27,7 @@
     <a>
 
     <button type="submit" class="btn btn-primary">Enviar</button>
-    <a href="{{ route('niveis.create') }}" class="btn btn-primary">Retornar</a>
+    <a href="{{ route('niveis.index') }}" class="btn btn-primary">Retornar</a>
 
 </form>
 @endsection
