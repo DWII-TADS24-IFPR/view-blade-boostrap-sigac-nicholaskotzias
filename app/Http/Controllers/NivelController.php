@@ -25,7 +25,8 @@ class NivelController extends Controller
         $request->validate([
             'nome' => 'required|string|min:3|unique:niveis,nome'
         ], [
-            'nome.unique' => 'O nome já foi registrado. Por favor, escolha outro.'
+            'nome.unique' => 'O nome já foi registrado. Por favor, escolha outro.',
+            'nome.min' => 'O nome precisa de no mínimo 3 caracteres'
         ]);
 
         Nivel::create([
@@ -41,25 +42,37 @@ class NivelController extends Controller
         return view('niveis.show')->with(['nivel' => $nivel]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Nivel $nivel)
+    public function edit(string $id)
     {
-        //
+        $nivel = Nivel::findOrFail($id);
+
+        return view('niveis.edit')->with(['nivel' => $nivel]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Nivel $nivel)
+    public function update(Request $request, string $id)
     {
-        //
+
+        $nivel = Nivel::findOrFail($id);
+
+        if ($request->nome === $nivel->nome) {
+            return back()->withErrors(['nome' => 'O nome não foi alterado, tente um nome diferente!'])->withInput();
+        }
+
+        $request->validate([
+            'nome' => 'required|string|min:3|unique:niveis,nome,' . $nivel->id
+        ], [
+            'nome.required' => 'O nome é obrigatório.',
+            'nome.unique' => 'Este nome já está em uso.',
+            'nome.min' => 'O nome deve ter pelo menos 3 caracteres.'
+        ]);
+
+        $nivel->update([
+            'nome' => $request->nome,
+        ]);
+
+        return redirect()->route('niveis.index')->with('success', 'Nível atualizado com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
 
