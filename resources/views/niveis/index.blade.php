@@ -6,6 +6,18 @@
 
 <h1>INDEX NIVEIS   </h1>
 
+    @if (session('error'))
+        <x-alert tipo="danger">
+            {{ session('error') }}
+        </x-alert>
+    @endif
+
+    @if (session('success'))
+        <x-alert tipo="success">
+            {{ session('success') }}
+        </x-alert>
+    @endif
+
 <a href="{{ route('niveis.create') }}" class="btn btn-primary">Adicionar</a>
 
 <table class="table table-white">
