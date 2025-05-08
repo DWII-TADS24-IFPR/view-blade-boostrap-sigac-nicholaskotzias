@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Nivel;
 use Illuminate\Http\Request;
 
+
 class NivelController extends Controller
 {
     public function index()
@@ -20,12 +21,17 @@ class NivelController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate(
-            ['nome'=>'required|string|min:3']
-        );
+        $request->validate([
+            'nome' => 'required|string|min:3|unique:niveis,nome'
+        ], [
+            'nome.unique' => 'O nome já foi registrado. Por favor, escolha outro.'
+        ]);
 
-        Nivel::create($request->all());
-        return redirect()->route('niveis.index')->with(['success'=>'Nivel']);
+        Nivel::create([
+            'nome' => $request->nome,
+        ]);
+
+        return redirect()->route('niveis.index')->with('success', 'Nível criado com sucesso!');
     }
 
     /**
