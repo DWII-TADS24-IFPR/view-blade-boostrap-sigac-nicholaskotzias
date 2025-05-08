@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h1>INDEX NIVEIS   </h1>
+<h1>INDEX NIVEIS</h1>
 
     @if (session('error'))
         <x-alert tipo="danger">
@@ -13,10 +13,11 @@
     @endif
 
     @if (session('success'))
-        <x-alert tipo="success">
-            {{ session('success') }}
-        </x-alert>
+    <x-alert tipo="success" id="success-message">
+        {{ session('success') }}
+    </x-alert>
     @endif
+
 
 <a href="{{ route('niveis.create') }}" class="btn btn-primary">Adicionar</a>
 
@@ -30,11 +31,19 @@
     </thead>
     <tbody>
         @foreach($niveis as $nivel)
-            <tr>
-            <td>{{$nivel->id}}</td>
-            <td>{{$nivel->nome}}</td>
+        <tr>
+            <td>{{ $nivel->id }}</td>
+            <td>{{ $nivel->nome }}</td>
             <td class="text-end">
-                <a href="{{ route('niveis.show', $nivel->id) }}" class="btn btn-primary">Ver</a>
+                <a href="{{ route('niveis.show', $nivel->id) }}" class="btn btn-info">Ver</a>
+
+                    <form action="{{ route('niveis.destroy', $nivel->id) }}" method="POST" style="display: inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger ms-2">Deletar</button>
+                    </form>
+                </td>
+            </tr>
             </td>
             </tr>
         @endforeach
