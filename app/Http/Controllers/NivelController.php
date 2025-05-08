@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nivel;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 
@@ -59,8 +60,12 @@ class NivelController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Nivel $nivel)
+    public function destroy(string $id)
     {
-        //
+
+        $nivel = Nivel::findOrFail($id);
+        $nivel -> delete();
+
+        return redirect()->route('niveis.index')->with('success', 'Nível excluido com sucesso!');
     }
 }
