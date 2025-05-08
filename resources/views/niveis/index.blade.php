@@ -36,6 +36,7 @@
             <td>{{ $nivel->nome }}</td>
             <td class="text-end">
                 <a href="{{ route('niveis.show', $nivel->id) }}" class="btn btn-info">Ver</a>
+                <a href="{{ route('niveis.edit', $nivel->id) }}" class="btn btn-info">Atualizar</a>
 
                     <form action="{{ route('niveis.destroy', $nivel->id) }}" method="POST" style="display: inline;">
                         @csrf
