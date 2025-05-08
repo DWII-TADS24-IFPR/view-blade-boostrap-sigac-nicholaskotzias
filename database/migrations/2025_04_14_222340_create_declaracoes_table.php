@@ -12,9 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('declaracoes', function (Blueprint $table) {
-            $table->id();
+            $table->id()->autoIncrement();
             $table->string('hash');
-            $table->datetime('data');
+            $table->dateTime('data');
+            $table->foreignId('aluno_id')->constrained()->onDelete('cascade');
+            $table->foreignId('comprovante_id')->constrained()->onDelete('cascade');
             $table->softDeletes();
             $table->timestamps();
         });
