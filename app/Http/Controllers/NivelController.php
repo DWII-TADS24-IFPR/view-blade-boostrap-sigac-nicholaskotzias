@@ -13,20 +13,19 @@ class NivelController extends Controller
         return view('niveis.index')->with(['niveis'=>$niveis]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('niveis.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            ['nome'=>'required|string|min:3']
+        );
+
+        Nivel::create($request->all());
+        return redirect()->route('niveis.index')->with(['success'=>'Nivel']);
     }
 
     /**
