@@ -6,7 +6,7 @@
 
 <h1>INDEX NIVEIS   </h1>
 
-<a href="{{ route('niveis.create') }}" class="btn btn-primary">Adicio</a>
+<a href="{{ route('niveis.create') }}" class="btn btn-primary">Adicionar</a>
 
 <table class="table table-white">
     <thead>
