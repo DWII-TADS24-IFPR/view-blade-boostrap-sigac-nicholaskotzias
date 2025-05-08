@@ -34,12 +34,10 @@ class NivelController extends Controller
         return redirect()->route('niveis.index')->with('success', 'Nível criado com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Nivel $nivel)
+    public function show(string $id)
     {
-        //
+        $nivel = Nivel::findOrFail($id);
+        return view('niveis.show')->with(['nivel' => $nivel]);
     }
 
     /**
