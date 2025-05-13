@@ -61,11 +61,7 @@ class CursoController extends Controller
     {
         $curso = Curso::findOrFail($id);
 
-        if ($request->nome === $curso->nome) {
-            return back()->withErrors(['nome' => 'O nome não foi alterado, tente um nome diferente!'])->withInput();
-        }
-
-       $request->validate([
+        $request->validate([
             'nome' => 'required|string|min:3|unique:cursos,nome',
             'sigla' => 'required|string|min:3',
             'total_horas' => 'required|integer|min:1|max:10000',
@@ -85,7 +81,7 @@ class CursoController extends Controller
     public function destroy(string $id)
     {
         $curso = Curso::findOrFail($id);
-        $curso -> delete();
+        $curso->delete();
 
         return redirect()->route('cursos.index')->with(['success' => 'Curso ' . $curso->nome . ' excluido com sucesso!']);
     }
