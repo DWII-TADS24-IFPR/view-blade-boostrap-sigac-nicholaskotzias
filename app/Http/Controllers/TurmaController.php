@@ -22,7 +22,7 @@ class TurmaController extends Controller
 
     public function store(Request $request)
     {
-         $request->validate([
+        $request->validate([
             'ano' => 'required|integer|min:2000',
             'curso_id' => 'required|exists:cursos,id'
         ]);
@@ -55,11 +55,7 @@ class TurmaController extends Controller
     {
         $turma = Turma::findOrFail($id);
 
-        if ($request->ano === $turma->ano) {
-            return back()->withErrors(['ano' => 'O ano não foi alterado, tente um ano diferente!'])->withInput();
-        }
-
-       $request->validate([
+        $request->validate([
             'ano' => 'required|integer|min:2000',
             'curso_id' => 'required|exists:cursos,id'
         ]);
@@ -75,7 +71,7 @@ class TurmaController extends Controller
     public function destroy(string $id)
     {
         $turma = Turma::findOrFail($id);
-        $turma -> delete();
+        $turma->delete();
 
         return redirect()->route('turmas.index')->with(['success' => 'Turma ' . $turma->ano . ' excluida com sucesso!']);
     }

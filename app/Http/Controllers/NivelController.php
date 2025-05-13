@@ -11,7 +11,7 @@ class NivelController extends Controller
     public function index()
     {
         $niveis = Nivel::all();
-        return view('niveis.index')->with(['niveis'=>$niveis]);
+        return view('niveis.index')->with(['niveis' => $niveis]);
     }
 
     public function create()
@@ -78,7 +78,7 @@ class NivelController extends Controller
     {
 
         $nivel = Nivel::findOrFail($id);
-        $nivel -> delete();
+        $nivel->delete();
 
         return redirect()->route('niveis.index')->with(['success' => 'Nível ' . $nivel->nome . ' excluido com sucesso!']);
     }
