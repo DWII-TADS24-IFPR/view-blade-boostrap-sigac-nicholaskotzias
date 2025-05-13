@@ -37,7 +37,10 @@
         </select>
     </div>
 
-    <button type="submit" class="btn btn-primary">Atualizar</button>
+     <div class="d-flex justify-content-between">
+        <a href="{{ route('turmas.index') }}" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+    </div>
 </form>
 
 @endsection
