@@ -38,7 +38,7 @@ class CursoController extends Controller
             'nivel_id' => $request->nivel_id,
         ]);
 
-        return redirect()->route('cursos.index')->with(['success' => 'Nível ' . $Curso->nome . ' criado com sucesso!']);
+        return redirect()->route('cursos.index')->with(['success' => 'Curso ' . $Curso->nome . ' criado com sucesso!']);
     }
 
     public function show(string $id)
