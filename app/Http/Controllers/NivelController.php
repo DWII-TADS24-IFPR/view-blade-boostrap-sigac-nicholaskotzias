@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nivel;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 
 
@@ -25,16 +24,18 @@ class NivelController extends Controller
         $request->validate([
             'nome' => 'required|string|min:3|unique:niveis,nome'
         ], [
-            'nome.unique' => 'O nome já foi registrado. Por favor, escolha outro.',
-            'nome.min' => 'O nome precisa de no mínimo 3 caracteres'
+            'nome.required' => 'O nome é obrigatório.',
+            'nome.unique' => 'Este nome já está em uso.',
+            'nome.min' => 'O nome deve ter pelo menos 3 caracteres.'
         ]);
 
-        Nivel::create([
+        $nivel = Nivel::create([
             'nome' => $request->nome,
         ]);
 
-        return redirect()->route('niveis.index')->with('success', 'Nível criado com sucesso!');
+        return redirect()->route('niveis.index')->with(['success' => 'Nível ' . $nivel->nome . ' criado com sucesso!']);
     }
+
 
     public function show(string $id)
     {
@@ -51,7 +52,6 @@ class NivelController extends Controller
 
     public function update(Request $request, string $id)
     {
-
         $nivel = Nivel::findOrFail($id);
 
         if ($request->nome === $nivel->nome) {
@@ -70,8 +70,9 @@ class NivelController extends Controller
             'nome' => $request->nome,
         ]);
 
-        return redirect()->route('niveis.index')->with('success', 'Nível atualizado com sucesso!');
+        return redirect()->route('niveis.index')->with(['success' => 'Nível ' . $nivel->nome . ' atualizado com sucesso!']);
     }
+
 
     public function destroy(string $id)
     {
@@ -79,6 +80,6 @@ class NivelController extends Controller
         $nivel = Nivel::findOrFail($id);
         $nivel -> delete();
 
-        return redirect()->route('niveis.index')->with('success', 'Nível excluido com sucesso!');
+        return redirect()->route('niveis.index')->with(['success' => 'Nível ' . $nivel->nome . ' excluido com sucesso!']);
     }
 }
