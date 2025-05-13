@@ -3,7 +3,7 @@
 @section('title', 'Níveis')
 
 @section('content')
-<h1>VISUALIZAR NIVEL</h1>
+<h1>Visualizar Nivel</h1>
 
 <table class="table table-white">
     <thead>

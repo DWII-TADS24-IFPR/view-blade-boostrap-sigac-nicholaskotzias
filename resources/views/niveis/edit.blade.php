@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h1>EDITAR NIVEL</h1>
+<h1>Editar Nivel</h1>
 
 @if ($errors->any())
     <div class="alert alert-danger mb-4">
