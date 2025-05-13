@@ -49,6 +49,9 @@
         </select>
     </div>
 
-    <button type="submit" class="btn btn-primary">Atualizar</button>
+    <div class="d-flex justify-content-between">
+        <a href="{{ route('cursos.index') }}" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+    </div>
 </form>
 @endsection

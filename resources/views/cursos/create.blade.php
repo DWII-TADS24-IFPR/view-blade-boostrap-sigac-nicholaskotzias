@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h1>CRIAR CURSO</h1>
+<h1>Criar Curso</h1>
 
 @if ($errors->any())
     <div class="alert alert-danger">
