@@ -77,6 +77,6 @@ class TurmaController extends Controller
         $turma = Turma::findOrFail($id);
         $turma -> delete();
 
-        return redirect()->route('turmas.index')->with(['success' => 'Turma ' . $turma->nome . ' excluido com sucesso!']);
+        return redirect()->route('turmas.index')->with(['success' => 'Turma ' . $turma->ano . ' excluida com sucesso!']);
     }
 }
