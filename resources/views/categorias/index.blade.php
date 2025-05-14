@@ -29,8 +29,8 @@
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">MAXIMO HORAS</th>
-                    <th scope="col">CURSO</th>
+                    <th scope="col">Maximo Horas</th>
+                    <th scope="col">Curso</th>
                     <th scope="col">
                 </tr>
             </thead>
