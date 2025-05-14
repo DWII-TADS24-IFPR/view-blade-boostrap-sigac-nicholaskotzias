@@ -15,8 +15,8 @@
     </thead>
     <tbody>
         <tr>
-            <td scope="col">{{ $curso->id }}</td>
-            <td scope="col">{{ $curso->maximo_horas }}</td>
+            <td scope="col">{{ $categoria->id }}</td>
+            <td scope="col">{{ $categoria->maximo_horas }}</td>
             <td scope="col">{{ $categoria->curso->id }}</td>
 
         </tr>
