@@ -11,11 +11,13 @@
             <th scope="col">ID</th>
             <th scope="col">NOME</th>
             <th scope="col">MAXIMO HORAS</th>
+            <th scope="col">CURSO ID</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td scope="col">{{ $categoria->id }}</td>
+            <td scope="col">{{ $categoria->nome }}</td>
             <td scope="col">{{ $categoria->maximo_horas }}</td>
             <td scope="col">{{ $categoria->curso->id }}</td>
 
@@ -47,5 +49,5 @@
     </tbody>
 </table>
 
-<button class="btn btn-primary" onclick="window.location.href='{{route('cursos.index')}}'">Retornar</button>
+<button class="btn btn-primary" onclick="window.location.href='{{route('categorias.index')}}'">Retornar</button>
 @endsection
