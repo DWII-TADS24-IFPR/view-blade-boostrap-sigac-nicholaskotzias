@@ -31,7 +31,6 @@
                     <th scope="col">Nome</th>
                     <th scope="col">CPF</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Senha</th>
                     <th scope="col">Curso</th>
                     <th scope="col">Turma</th>
                     <th scope="col">
@@ -44,7 +43,6 @@
                         <td>{{ $aluno->nome }}</td>
                         <td>{{ $aluno->cpf }}</td>
                         <td>{{ $aluno->email }}</td>
-                        <td>{{ $aluno->senha }}</td>
                         <td>{{ $aluno->curso ? $aluno->curso->nome : 'Curso não atribuído' }}</td>
                         <td>{{ $aluno->turma ? $aluno->turma->ano : 'Turma não atribuída' }}</td>
                         <td class="text-end">
